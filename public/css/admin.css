@@ -1,0 +1,42 @@
+		body{
+			background-image: url('photos/admin.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+		#ques, #ans{
+			line-height: 3rem;
+			font-size: 1.5rem;
+			margin-left: 22%;
+			margin-top: 10%;
+			color: black;
+			background-color: #E5E7E9;
+		}
+		#submit{
+			width: 10%;
+			margin-left: 45%;
+			margin-top: 15%;
+			font-size: 2rem;
+			color: black;
+			background-color: #E5E7E9;
+		}
+		#submit:hover{
+			color: #00c;
+			cursor: pointer;
+			background-color: #B2BABB;
+		}
+		#head{
+			font-size: 3rem;
+			color: white;
+			width: 100%;
+			text-align: center;
+		}
+		#logout{
+			font-size: 2rem;
+			color: white;
+
+		}
+		#logout:hover{
+			color: #00c;
+			cursor: pointer;
+		}

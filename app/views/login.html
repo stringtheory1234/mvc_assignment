@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+
+<body>
+	<div id="top">This is Login Page...</div>
+	<form action="/login" method="POST">
+		<p class="para">Username:</p>
+		<input type="text" name="username" placeholder="username">
+		<p class="para">Password:</p>
+		<input type="password" name="password" placeholder="password">
+		<input type="submit" name="submit" id="btn" value="login">
+	</form>
+	<p id="error">{{error}}</p>
+</body>
+</html>

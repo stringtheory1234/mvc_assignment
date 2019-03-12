@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+	<link rel="stylesheet" type="text/css" href="/css/user.css">
+	<script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.10.2.js" type="text/javascript"></script>  
+
+</head>
+<body>
+
+	<div><button id="logout" style="float: right;" onclick="logout()" style="width: 100%;">Logout</button></div>
+	<div id="top1">Welcome....</div>
+	<div id="top2">You are logged in as {{user}}</div>
+	<div class="head">	
+		Questions to solve....
+	</div>
+	<div id="append"></div>
+
+		<div id="lead">LeaderBoard: : </div>
+		<span id="leader"></span>
+	<div>{{error}}</div>
+
+	<script>
+			function myfunc(elem){
+				var val=document.getElementById("v"+elem).value;
+				console.log(val);
+				var dataString="qid="+elem+"&ans="+val;
+		          $.ajax({
+
+		            type: 'POST',
+		            url: '/user',
+		            data: dataString,
+		            success: function (abc) {
+		            	alert(abc);
+		       		}
+		          });
+		          $.ajax({
+
+		            type: 'GET',
+		            url: '/getleader',
+		            success: function (abc) {
+		            	document.getElementById('leader').innerHTML=abc;
+		       		}
+		          });
+			}
+			$( document ).ready(function() {
+				$.ajax({
+
+		            type: 'GET',
+		            url: '/getdata',
+		            success: function (abc) {
+		            	document.getElementById('append').innerHTML=abc;
+		       		}
+		          });
+				$.ajax({
+
+		            type: 'GET',
+		            url: '/getleader',
+		            success: function (abc) {
+		            	document.getElementById('leader').innerHTML=abc;
+		       		}
+		          });
+
+			});
+			function logout(){
+					$.ajax({
+						type: 'POST',
+						url: '/logout',
+						success:function(abc){
+							window.location.replace("/");
+
+						}
+					});
+				}
+
+</script>
+</body>
+</html>
