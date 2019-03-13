@@ -30,6 +30,7 @@ class Login{
         $row=$user->fetch(\PDO::FETCH_ASSOC);
         if($row) {
             session_start();
+            $point=$row['points'];
             $username=$_SESSION['username'];
             $sql=$db->prepare("SELECT * FROM solved WHERE qid=:qid AND username=:username AND correct=1");
             $data1=$sql->execute(array(
@@ -41,12 +42,14 @@ class Login{
                 return "Cannot Try Again";
             }
             else{
-                $sql=$db->prepare("INSERT INTO solved(qid, username, correct) VALUES(:qid, :username, '1')");
+
+                $sql=$db->prepare("INSERT INTO solved(qid, username, correct, point) VALUES(:qid, :username, '1', :point)");
                 $data2=$sql->execute(array(
                     "qid"=>$qid,
-                    "username"=>$username
+                    "username"=>$username,
+                    "point"=>$point
                 ));
-                return "Solved it, 100 points";
+                return "Solved it,".$point." points";
             }
             
         

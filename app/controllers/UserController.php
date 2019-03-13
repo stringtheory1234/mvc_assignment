@@ -1,6 +1,7 @@
 <?php
     namespace Controllers;
     use Models\Login;
+    use Models\GetData;
 
     class UserController
     {
@@ -20,7 +21,8 @@
                 if(isset($_SESSION['username'])){
                     echo $this->twig->render("user.html", array(
                         "title" => "Welcome",
-                        "user"=>$username
+                        "user"=>$username,
+                        "questions" => GetData::getusers()
                     )) ;
                 }else{
                     header("Location: /");

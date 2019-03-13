@@ -4,13 +4,14 @@ include 'utility.php';
 class Admin{
 
 	
-    public static function addques($question, $ans){
+    public static function addques($question, $ans, $points){
         $db=getDB();
         if(!empty($question) || !empty($ans)){
-        $sql = $db->prepare("INSERT INTO ques(question, answer) VALUES(:question, :ans)");
+        $sql = $db->prepare("INSERT INTO ques(question, answer, points) VALUES(:question, :ans, :points)");
         $sql->execute(array(
             "question"=>$question,
-            "ans"=>$ans
+            "ans"=>$ans,
+            "points"=>$points
         ));
         return true;
     }

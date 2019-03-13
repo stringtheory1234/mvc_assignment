@@ -4,10 +4,10 @@
 			background-size: cover;
 			background-repeat: no-repeat;
 		}
-		#ques, #ans{
+		#ques, #ans, #points{
 			line-height: 3rem;
 			font-size: 1.5rem;
-			margin-left: 22%;
+			margin-left: 12%;
 			margin-top: 10%;
 			color: black;
 			background-color: #E5E7E9;

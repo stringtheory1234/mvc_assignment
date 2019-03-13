@@ -3,6 +3,13 @@
 <head>
 	<title>{{title}}</title>
 	<link rel="stylesheet" type="text/css" href="/css/admin.css">
+	<style type="text/css">
+		#points{
+			width: 10%;
+			font-size: 2rem;
+			margin-left: 3%;
+		}
+	</style>
 </head>
 <body>
 	<button id="logout" onclick="logout()">Logout</button>
@@ -12,6 +19,7 @@
 	<form action="/admin" method="POST">
 		<input type="test" name="question" placeholder="Enter a question...." id="ques">
 		<input type="text" name="answer" placeholder="Enter answer..." id="ans">
+		<input type="text" name="points" placeholder="points" id="points" style="font-size: 2rem;">
 		<input type="submit" name="submit" id="submit">
 	</form>
 	<div style="font-size: 2rem; width: 100%; text-align: center; color: blue;">{{error}}</div>

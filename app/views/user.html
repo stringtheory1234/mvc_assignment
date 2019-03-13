@@ -10,21 +10,25 @@
 
 	<div><button id="logout" style="float: right;" onclick="logout()" style="width: 100%;">Logout</button></div>
 	<div id="top1">Welcome....</div>
-	<div id="top2">You are logged in as {{user}}</div>
+	<div id="top2">You are logged in as {{question}}</div>
 	<div class="head">	
 		Questions to solve....
 	</div>
-	<div id="append"></div>
 
 		<div id="lead">LeaderBoard: : </div>
 		<span id="leader"></span>
 	<div>{{error}}</div>
 
+	{% for question in questions %}
+        <p style="color: white; font-size: 2rem;">{{ question['question'] }}</p>
+        <input type="text" name="v{{question['qid']}}" id="v{{question['qid']}}">
+        <button type="submit" name="submit{{question['qid']}}" onclick="myfunc('{{question['qid']}}')" id="{{question['qid']}}">submit</button>
+    {% endfor %}
+
 	<script>
-			function myfunc(elem){
-				var val=document.getElementById("v"+elem).value;
-				console.log(val);
-				var dataString="qid="+elem+"&ans="+val;
+			function myfunc(id){
+				var val=document.getElementById("v"+id).value;
+				var dataString="qid="+id+"&ans="+val;
 		          $.ajax({
 
 		            type: 'POST',
@@ -44,14 +48,6 @@
 		          });
 			}
 			$( document ).ready(function() {
-				$.ajax({
-
-		            type: 'GET',
-		            url: '/getdata',
-		            success: function (abc) {
-		            	document.getElementById('append').innerHTML=abc;
-		       		}
-		          });
 				$.ajax({
 
 		            type: 'GET',

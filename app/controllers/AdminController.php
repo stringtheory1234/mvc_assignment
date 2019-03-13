@@ -19,24 +19,27 @@
             $username=$_SESSION['username'];
             if(isset($_SESSION['username'])){
                 if($_SESSION['username']=='admin'){
-                echo $this->twig->render("admin.html", array(
-                    "title" => "Adminpage",
-                    "user"=>$username
-                )) ;
-            }else{
-                echo $this->twig->render("user.html", array(
-                    "title" => "Welcome",
-                    "user"=>$username
-                )) ;
-            }
-            }else{
+                    echo $this->twig->render("admin.html", array(
+                        "title" => "Adminpage",
+                        "user"=>$username
+                    ));
+                } else {
+                    echo $this->twig->render("user.html", array(
+                        "title" => "Welcome",
+                        "user"=>$username
+                    ));
+                }
+            } else {
                 header("Location: /");
             }
         }
         public function post(){
-            $ques=$_POST['question'];
+            $ques = $_POST['question'];
             $ans=$_POST['answer'];
-            if(Admin::addques($ques, $ans)){
+            $points=$_POST['points'];
+            session_start();
+            $username=$_SESSION['username'];
+            if(Admin::addques($ques, $ans, $points )){
                 echo $this->twig->render("admin.html", array(
                     "title" => "Adminpage",
                     "user"=>$username,
